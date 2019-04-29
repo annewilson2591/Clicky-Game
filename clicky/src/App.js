@@ -2,21 +2,24 @@ import React from 'react';
 import ImageCard from "./components/ImageCard";
 import Wrapper from "./components/Wrapper";
 import logo from './logo.svg';
-import images from "./images.json";
+import dogs from "./dogs.json";
 import './App.css';
 
 class App extends React.Component {
-  state = { images }
+  state = { dogs }
+
+
+  //click event here
 
   render() {
     return (
       <Wrapper>
         <h1 className="title">Image List</h1>
-        {this.state.images.map(image => 
+        {this.state.dog.map(dog => 
           <ImageCard
-          name={image.name}
-          image={image.image}
-          key={image.id}
+          name={dog.name}
+          image={dog.image}
+          key={dog.id}
         />
         )}
       </Wrapper>
