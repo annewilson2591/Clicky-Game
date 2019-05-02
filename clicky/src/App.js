@@ -1,51 +1,41 @@
 import React from 'react';
 import ImageCard from "./components/ImageCard";
 import Wrapper from "./components/Wrapper";
-import logo from './logo.svg';
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import dogs from "./dogs.json";
 import './App.css';
 
 class App extends React.Component {
-  state = { dogs }
-
+  state = { 
+    dogs 
+  };
 
   //click event here
+  rearrangeImage = id => {
+    const dogs = this.state.dogs.filter(dog => dog.id !== id);
+    this.setState({ dogs });
+  }
 
+
+  //wrap around components
   render() {
     return (
       <Wrapper>
-        <h1 className="title">Image List</h1>
-        {this.state.dog.map(dog => 
-          <ImageCard
-          name={dog.name}
-          image={dog.image}
-          key={dog.id}
-        />
-        )}
+        <Navbar></Navbar> 
+        <Header></Header>
+          {this.state.dogs.map(dog => (
+            <ImageCard
+              // rearrangeImage={this.rearrangeImage}
+              id={dog.id}
+              image={dog.image}
+              key={dog.id}
+            />
+          ))}
       </Wrapper>
     );
   }
-};
+}
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
