@@ -1,18 +1,15 @@
 import React from "react";
 import "./imageCard.css";
 
-function ImageCard(props) {
-    return (
-        <div className="card">
-            <div className="image-container">
-                <img src={props.image} />
-            </div>
-            
-            {/* rearrange function here */}
-            <span onClick={() => props.rearrangeImage(props.id)} className="rearrange">
-            </span>
+const ImageCard = props => (
+    <div className="card">
+        <div className="img-container">
+            <a onClick={() => props.selectDog(props.id)}
+                className={props.score}
+            />
+                <img alt={props.id} src={props.image} />
         </div>
-    );
-}
+    </div>
+);
 
 export default ImageCard;

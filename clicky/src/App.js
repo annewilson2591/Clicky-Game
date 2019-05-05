@@ -17,8 +17,8 @@ class App extends React.Component {
     highScore: 0
   }
 
-  // componentDidMount() 
-  // }
+  componentDidMount() {
+  }
 
   shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -41,41 +41,45 @@ class App extends React.Component {
       });
     }
   
-  else {
-    //correctly selected new dog
-    const newDogs = this.state.unSelectedDogs.filter(item => item.id !== id);
+    else {
+      //correctly selected new dog
+      const newDogs = this.state.unSelectedDogs.filter(item => item.id !== id);
 
-    this.setState({
-      message: "You guessed correctly!",
-      score: this.state.score + 1,
-      dogs: dogs,
-      unSelectedDogs: newDogs
-    });
-  }
+      this.setState({
+        message: "You guessed correctly!",
+        score: this.state.score + 1,
+        dogs: dogs,
+        unSelectedDogs: newDogs
+      });
+    }
 
-  this.shuffleArray(dogs);
-};
+    this.shuffleArray(dogs);
+  };
 
   //wrap around components
   render() {
     return (
       <Wrapper>
-          <Navbar message = {this.state.message} score={this.state.score} highScore={this.state.highScore} /> 
+          <Navbar 
+            message = {this.state.message}  
+            score={this.state.score} 
+            highScore={this.state.highScore} 
+            /> 
           <Header />
-            
-            {
-              this.state.dogs.map(dog => (
-                <ImageCard  
-                  id={dog.id}
-                  image={dog.image}
-                  selectDog={this.selectDog}
-                  score={this.state.score}
-                  key={dog.id}
-                />
-              ))
-            }
+          {
+            this.state.dogs.map(dog => (
+              <ImageCard  
+                id={dog.id}
+                image={dog.image}
+                selectDog={this.selectDog}
+                score={this.state.score}
+                key={dog.id}
+              />
+            ))
+          }
       </Wrapper>
     );
   }
+} 
 
 export default App;
