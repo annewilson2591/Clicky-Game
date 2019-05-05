@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+import React, { Component } from "react";
 import ImageCard from "./components/ImageCard";
 import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
