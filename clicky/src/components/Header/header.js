@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Header extends Component {
-    state = {
 
-    };
 
-    render() {
+    function Header() {
+    
         return (
             <header>
                 <h1>Clicky Game!</h1>
@@ -13,6 +11,6 @@ class Header extends Component {
             </header>
         );
     }
-}
+
 
 export default Header;

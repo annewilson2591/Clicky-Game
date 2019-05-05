@@ -10,12 +10,12 @@ class Navbar extends Component {
             <nav class="navbar">
                 <ul>
                     <li class="brand">
-                        <a href="">Clicky Game</a>
+                        <p>Clicky Game</p>
                     </li>
                     <li class>Click an image to begin!</li>
                     <li>
                         "Score: "
-                        "0"
+                        {/* {props.score} */}
                         " | Top Score: "
                         "0"
                     </li>
@@ -24,3 +24,5 @@ class Navbar extends Component {
         );
     }
 }
+
+export default Navbar;

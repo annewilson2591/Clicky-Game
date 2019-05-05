@@ -1,11 +1,11 @@
 import React from "react";
-import "./ImageCard.css";
+import "./imageCard.css";
 
 function ImageCard(props) {
     return (
         <div className="card">
             <div className="image-container">
-                <img alt={props.image} />
+                <img src={props.image} />
             </div>
             
             {/* rearrange function here */}
