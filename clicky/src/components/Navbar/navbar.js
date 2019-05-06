@@ -1,28 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
+import "./Navbar.css";
 
-class Navbar extends Component {
-    state = {
 
-    };
-
-    render() {
-        return (
-            <nav class="navbar">
-                <ul>
-                    <li class="brand">
-                        <p>Clicky Game</p>
-                    </li>
-                    <li class>Click an image to begin!</li>
-                    <li>
-                        "Score: "
-                        {/* {props.score} */}
-                        " | Top Score: "
-                        "0"
-                    </li>
-                </ul>
-            </nav>
-        );
-    }
-}
+const Navbar = props => (
+    <div>
+        <ul className="">
+            <li><a href="/">Dog Clicky Game</a></li>
+        </ul>
+    </div>
+);
 
 export default Navbar;
