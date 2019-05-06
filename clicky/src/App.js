@@ -1,14 +1,14 @@
 
 
-import React, { Component } from "react";
-import ImageCard from "./components/ImageCard";
-import Wrapper from "./components/Wrapper";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import dogs from "./dogs.json";
+import React, { Component } from 'react';
+import ImageCard from './components/ImageCard';
+import Wrapper from './components/Wrapper';
+import Header from './components/Header';
+import Navbar from './components/Navbar';
+import dogs from './dogs.json';
 import './App.css'
 
-class App extends React.Component {
+class App extends Component {
   state = { 
     message: "Click an image to begin!",
     dogs,
