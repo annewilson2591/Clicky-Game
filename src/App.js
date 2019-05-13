@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import ImageCard from './components/ImageCard';
-import Wrapper from './components/Wrapper';
+import Container from './components/Container';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import dogs from './dogs.json';
