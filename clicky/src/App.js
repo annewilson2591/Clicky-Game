@@ -12,74 +12,79 @@ class App extends Component {
   state = { 
     message: "Click an image to begin!",
     dogs,
-    unSelectedDogs: dogs,
     score: 0,
     highScore: 0
   }
 
   componentDidMount() {
+    this.setState({ dogs: this.shuffleArray(this.state.dogs) });
   }
 
-  shuffleArray = array => {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-  }
+  correctGuess = newArray => {
+    const { highScore, score } = this.state;
+    const newScore = score + 1;
+    const newHighScore = Math.max(newScore, highScore);
 
-  selectDog = id => {
-    const findDog = this.state.unSelectedDogs.find(item => item.id === id);
-
-    if(findDog === undefined) {
-      //failed to select a new dog
-      this.setState({
-        message: "You guessed incorrectly!",
-        highScore: (this.state.score > this.state.highScore) ? this.state.score : this.state.highScore,
-        score: 0,
-        dogs: dogs,
-        unSelectedDogs: dogs
-      });
-    }
-  
-    else {
-      //correctly selected new dog
-      const newDogs = this.state.unSelectedDogs.filter(item => item.id !== id);
-
-      this.setState({
-        message: "You guessed correctly!",
-        score: this.state.score + 1,
-        dogs: dogs,
-        unSelectedDogs: newDogs
-      });
-    }
-
-    this.shuffleArray(dogs);
+    this.setState({
+      dogs: this.shuffleArray(newArray),
+      score: newScore,
+      highScore: newHighScore
+    });
   };
 
-  //wrap around components
+  resetDogs = dogs => {
+    const resetDogs = data.map(item => ({ ...item, clicked: false }));
+    return this.shuffleArray(resetDogs);
+  }
+
+  shuffleArray = dogs => {
+    let i = dogs.length - 1;
+    while (i > 0) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = dogs[i];
+      dogs[i] = dogs[j];
+      data[j] = temp;
+      i--;
+    }
+    return dogs;
+  };
+
+  selectDog = id => {
+    let correctGuess = false;
+    const newDogs = this.state.dogs.map(item => {
+      const newItem = { ...item };
+      if (newItem.id === id) {
+        if (!newItem.clicked) {
+          newItem.clicked = true;
+          correctGuess = true;
+        }
+      }
+      return newDogs;
+    });
+    correctGuess
+      ? this.handleCorrectGuess(newDogs)
+      : this.handleIncorrectGuess(newDogs);
+  };
+
   render() {
     return (
-      <Wrapper>
-          <Navbar 
-            message = {this.state.message}  
-            score={this.state.score} 
-            highScore={this.state.highScore} 
-            /> 
+      <div>
+          <Navbar score={this.state.score} highScore={this.state.high} />
           <Header />
-          {
-            this.state.dogs.map(dog => (
-              <ImageCard  
-                id={dog.id}
-                image={dog.image}
-                selectDog={this.selectDog}
-                score={this.state.score}
-                key={dog.id}
+          <Container>
+            {this.state.dogs.map(item => (
+              <ImageCard
+                key={item.id}
+                id={item.id}
+                handleClick={this.handleClick}
+                image={item.image}
               />
-            ))
-          }
-      </Wrapper>
+            ))}
+          </Container>
+          <Footer />
+      </div>
     );
   }
-} 
+}
 
 export default App;
