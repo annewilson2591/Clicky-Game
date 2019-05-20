@@ -1,0 +1,17 @@
+.footer {
+    background: black;
+    height: 100px;
+    position: relative;
+    overflow: auto;
+    color: white
+}
+
+.footer > .foot-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: black;
+    font-weight: 500;
+}
