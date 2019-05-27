@@ -1,9 +1,9 @@
 .footer {
-    background: black;
+    background: #FF66CC;
     height: 100px;
     position: relative;
+    color: black;
     overflow: auto;
-    color: white
 }
 
 .footer > .foot-content {
@@ -12,6 +12,6 @@
     left: 0;
     right: 0;
     padding: 10px;
-    background: black;
+    background: #ffb8e6;
     font-weight: 500;
 }

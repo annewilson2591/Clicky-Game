@@ -1,0 +1,43 @@
+.navscore {
+  background: #ffb8e6;
+  min-height: 70px;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  color: black;
+  font-size: calc(10px + (24 - 10) * (100vw - 320px) / (1200 - 400));
+  z-index: 99;
+  white-space: nowrap;
+}
+
+.navscore ul {
+    margin: 0;
+    padding: 0;
+}
+
+.navscore li {
+  display: inline-block;
+  padding: 26px 0px;
+  width: 33.3%;
+  text-align: center;
+}
+
+.navscore a {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
+
+@media (max-width: 420px) {
+    .navscore li:first-child {
+      width: 25%;
+    }
+  
+    .navscore li:nth-child(2) {
+      width: 35%;
+    }
+  
+    .navscore li:last-child {
+      width: 40%;
+    }
+  }
